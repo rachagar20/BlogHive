@@ -12,7 +12,7 @@ const postRoute=require('./routes/posts')
 const commentRoute=require('./routes/comments')
 //database
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: 'https://bloghiveapp.vercel.app',
     credentials: true, 
   }))
 
