@@ -21,7 +21,7 @@ const MyBlogs = () => {
   const fetchPosts=async()=>{
     setLoader(true)
     try{
-      const res=await axios.get(URL+"/api/posts/user/"+user._id)
+      const res=await axios.get(URL+"/api/posts/user/"+user?._id)
       // console.log(res.data)
       setPosts(res.data)
       if(res.data.length===0){
@@ -42,25 +42,30 @@ const MyBlogs = () => {
   useEffect(()=>{
     fetchPosts()
 
-  },[search])
+  },[search,user])
 
   return (
     <div>
-        <Navbar/>
-        <div className="flex flex-col items-center px-8 md:px-[200px] min-h-[80vh]">
-        <h2 className="text-center font-bold mt-2 text-2xl">My Blogs</h2>
+  <Navbar/>
+  <div className="flex flex-col items-center px-8 md:px-[200px] min-h-[80vh]">
+    <h2 className="text-center font-bold mt-2 text-2xl">My Blogs</h2>
 
-        {loader?<div className="h-[40vh] flex justify-center items-center"><Loader/></div>:!noResults?
-        posts.map((post)=>(
-          <>
-          <Link to={user?`/posts/post/${post._id}`:"/login"}>
-          <HomePosts key={post._id} post={post}/>
-          </Link>
-          </>
-          
-        )):<h3 className="text-center font-bold mt-16">No posts available</h3>}
-        </div>
-    </div>
+    {loader ? (
+      <div className="h-[40vh] flex justify-center items-center">
+        <Loader/>
+      </div>
+    ) : !noResults ? (
+      posts.map((post) => (
+        <Link key={post._id} to={user ? `/posts/post/${post._id}` : "/login"}>
+          <HomePosts post={post}/>
+        </Link>
+      ))
+    ) : (
+      <h3 className="text-center font-bold mt-16">No posts available</h3>
+    )}
+  </div>
+</div>
+
   )
 }
 

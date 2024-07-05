@@ -26,7 +26,6 @@ router.post("/register",async(req,res)=>{
 router.post("/login",async (req,res)=>{
     try{
         const user=await User.findOne({email:req.body.email})
-        console.log(user)
         if(!user){
             return res.status(404).json("User not found!")
         }
@@ -61,7 +60,8 @@ router.get("/logout",async (req,res)=>{
 //REFETCH USER
 router.get("/refetch", (req,res)=>{
     const token=req.cookies.token
-    jwt.verify(token,process.env.JWT_SECRET,{},async (err,data)=>{
+    console.log(token)
+    jwt.verify(token,process.env.JWT_SECRET,async (err,data)=>{
         if(err){
             return res.status(404).json(err)
         }

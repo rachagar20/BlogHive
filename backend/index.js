@@ -10,8 +10,12 @@ const authRoute=require('./routes/auth')
 const userRoute=require('./routes/users')
 const postRoute=require('./routes/posts')
 const commentRoute=require('./routes/comments')
-dotenv.config()
 //database
+app.use(cors({
+    origin: 'http://localhost:5173',
+    credentials: true, 
+  }))
+
 const connectDB=async()=>{
     try{
         await mongoose.connect(`mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@cluster0.kjrkkbt.mongodb.net/`)
@@ -27,9 +31,10 @@ const connectDB=async()=>{
 
 //middlewares
 dotenv.config()
+const PORT=process.env.PORT||5000
+
 app.use(express.json())
 app.use("/images",express.static(path.join(__dirname,"/images")))
-app.use(cors({origin:"http://localhost:5173",credentials:true}))
 app.use(cookieParser())
 app.use("/api/auth",authRoute)
 app.use("/api/users",userRoute)
@@ -46,18 +51,16 @@ const storage=multer.diskStorage({
     },
     filename:(req,file,fn)=>{
         fn(null,req.body.img)
-        // fn(null,"image1.jpg")
     }
 })
 
 const upload=multer({storage:storage})
 app.post("/api/upload",upload.single("file"),(req,res)=>{
-    // console.log(req.body)
     res.status(200).json("Image has been uploaded successfully!")
 })
 
 
-app.listen(5000,()=>{
+app.listen(PORT,()=>{
     connectDB()
-    console.log("app is running on port "+5000)
+    console.log("app is running on port ",PORT)
 })
