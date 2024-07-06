@@ -66,7 +66,7 @@ const CreatePost = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <div className="flex-grow md:px-[200px] mt-8 pr-5 pl-5">
+      <div className="flex-grow md:px-[200px] mt-8 pr-5 pl-5 mb-10">
         <div className="pb-5 border border-gray-300 rounded-lg shadow-lg flex flex-col justify-center items-center bg-white">
           <div className="my-5 font-bold text-2xl text-center bg-indigo-500 text-white py-2 px-4 rounded-lg shadow-md">
             Create a Post
@@ -89,13 +89,13 @@ const CreatePost = () => {
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
             </div>
-            <div className="w-2/3 flex flex-col space-y-2">
+            <div className="w-2/3 "> 
               <label className="block text-gray-700 font-semibold mb-2">Categories</label>
-              <div className="flex items-center space-x-4">
+              <div className="flex xs:flex-col xs:space-x-0 sm:space-x-2 xs:space-y-2 sm:flex-row sm:space-y-0 items-center space-x-4">
                 <input
                   value={cat}
                   onChange={(e) => setCat(e.target.value)}
-                  className="flex-grow px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   placeholder="Enter post category"
                   type="text"
                 />

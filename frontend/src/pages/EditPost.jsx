@@ -119,15 +119,15 @@ const EditPost = () => {
               />
               
             </div>
-            <div className="w-2/3 flex flex-col space-y-2">
+            <div className="w-2/3">
               <label className="block text-gray-700 font-semibold mb-2">
                 Categories
               </label>
-              <div className="flex items-center space-x-4">
+              <div className="flex xs:flex-col xs:space-y-2 sm:flex-row sm:space-y-0 items-center space-x-4">
                 <input
                   value={cat}
                   onChange={(e) => setCat(e.target.value)}
-                  className="flex-grow px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   placeholder="Enter post category"
                   type="text"
                 />

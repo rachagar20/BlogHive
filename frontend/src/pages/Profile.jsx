@@ -111,16 +111,17 @@ const Profile = () => {
                 type="email"
               />
             </label>
-            <div className="flex items-center space-x-4 mt-6 w-full">
+            <div className="flex sm:items-center xs:flex-col sm:flex-row xs:space-x-0 xs:space-y-2 sm:space-y-0 sm:space-x-4 mt-6 w-full xs:items-center">
               <button
                 onClick={handleUserUpdate}
-                className="w-full text-white font-semibold bg-indigo-500 px-4 py-2 rounded-md hover:bg-indigo-600 transition duration-300"
+                className=" xs:w-2/3 sm:w-full text-white font-semibold bg-indigo-500 px-4 py-2 rounded-md hover:bg-indigo-600 transition duration-300 "
               >
                 Update
               </button>
               <button
                 onClick={handleUserDelete}
-                className="w-full text-white font-semibold bg-red-500 px-4 py-2 rounded-md hover:bg-red-600 transition duration-300"
+                className="xs:w-2/3 sm:w-full text-white font-semibold bg-red-500 px-4 py-2 rounded-md hover:bg-red-600 transition duration-300"
+              
               >
                 Delete
               </button>

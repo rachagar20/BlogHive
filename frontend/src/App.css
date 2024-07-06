@@ -18,3 +18,7 @@ html, body {
     background-color: #3f51b5;
     color: white;
   }
+
+  .posts{
+    margin:auto;
+  }
